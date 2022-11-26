@@ -1,6 +1,6 @@
-# Route Planning Project
+# OpenStreetMap Route Planner
 
-This repo contains the starter code for the Route Planning project.
+This repo contains my code for the Route Planning project in Course 1 of the Udacity C++ Nanodegree.
 
 <img src="map.png" width="600" height="450" />
 
@@ -16,6 +16,11 @@ git clone git@github.com:udacity/CppND-Route-Planning-Project.git --recurse-subm
 ```
 
 ## Dependencies for Running Locally
+
+This project was built and tested on Fedora. Building on Windows and OS X requires you to build the IO2D library, which can be pretty difficult.
+
+For simplicity's sake I've included a built copy of the IO2D library in the repo, which means if you're on Linux you can skip to the *Compiling and Running* section. Otherwise, good luck building it yourself and here's what you'll need:
+
 * cmake >= 3.11.3
   * All OSes: [click here for installation instructions](https://cmake.org/install/)
 * make >= 4.1 (Linux, Mac), 3.81 (Windows)
@@ -30,18 +35,13 @@ git clone git@github.com:udacity/CppND-Route-Planning-Project.git --recurse-subm
   * Installation instructions for all operating systems can be found [here](https://github.com/cpp-io2d/P0267_RefImpl/blob/master/BUILDING.md)
   * This library must be built in a place where CMake `find_package` will be able to find it
  
-
-## Compiling and Running
-
-### Compiling
-To compile the project, first, create a `build` directory and change to that directory:
+### Compiling and Running
+Compiling and running the project is as easy as:
 ```
-mkdir build && cd build
-```
-From within the `build` directory, then run `cmake` and `make` as follows:
-```
+cd build
 cmake ..
 make
+./OSM_A_star_search
 ```
 ### Running
 The executable will be placed in the `build` directory. From within `build`, you can run the project as follows:
@@ -59,47 +59,3 @@ The testing executable is also placed in the `build` directory. From within `bui
 ```
 ./test
 ```
-
-## Troubleshooting
-* Some students have reported issues in cmake to find io2d packages, make sure you have downloaded [this](https://github.com/cpp-io2d/P0267_RefImpl/blob/master/BUILDING.md#xcode-and-libc).
-* For MAC Users cmake issues: Comment these lines from CMakeLists.txt under P0267_RefImpl
-    ```
-    if( NOT DEFINED IO2D_WITHOUT_SAMPLES )
-	     add_subdirectory(P0267_RefImpl/Samples)
-    endif()
-    ```
-    And then run "ALL_Build" and "install" in XCode.
-    
-    If any packages are missing try to install packages using 
-    ```
-    brew install pkg-config
-    ```
- * For Ubuntu Linux IO2D installation errors, follow the given steps:
-   ```
-	sudo apt update
-	sudo apt install build-essential
-	sudo apt install cmake
-	sudo apt install libcairo2-dev
-	sudo apt install libgraphicsmagick1-dev
-	sudo apt install libpng-dev
-
-	git clone --recurse-submodules https://github.com/cpp-io2d/P0267_RefImpl
-	cd P0267_RefImpl
-	mkdir Debug
-	cd Debug
-	cmake --config Debug "-DCMAKE_BUILD_TYPE=Debug" ..
-	cmake --build .
-	sudo make install
-   ```
-     
- * If you are working on windows and unable to install IO2D:
-      * Enable WSL (Windows Subsystem for Linux) and use a distribution like [Ubuntu](https://ubuntu.com/wsl).(available from the windows store): 
-      * Install the required dependencies (compiler, cmake etc.) in the WSL(as mentioned above for ubuntu)
-      * Configure CLion to use the WSL [toolchain](https://www.jetbrains.com/help/clion/how-to-use-wsl-development-environment-in-product.html#wsl-tooclhain)
-      * Use the WSL toolchain to build the project
-      * If you are still facing errors, visit this [link](https://github.com/udacity/CppND-Route-Planning-Project/issues/9).
-     
-
-* If you are facing errors with --config try to remove -- from the command.
-
-
