@@ -9,6 +9,7 @@
 #include "route_planner.h"
 
 using namespace std::experimental;
+using std::string, std::cout, std::cin, std::endl;
 
 static std::optional<std::vector<std::byte>> ReadFile(const std::string &path)
 {   
@@ -27,6 +28,17 @@ static std::optional<std::vector<std::byte>> ReadFile(const std::string &path)
     return std::move(contents);
 }
 
+void get_coordinates(const string pair, float n) {
+    cout << "Enter " << pair << ": ";
+    cin >> n;
+    while (cin.fail() || n < 0 || n > 100) {
+        cout << "Invalid value. Please enter a value between 0-100.";
+        cin.clear();
+        cin.ignore(10000, '\n');
+        cin >> n;
+    }
+}
+
 int main(int argc, const char **argv)
 {    
     std::string osm_data_file = "";
@@ -36,36 +48,31 @@ int main(int argc, const char **argv)
                 osm_data_file = argv[i];
     }
     else {
-        std::cout << "To specify a map file use the following format: " << std::endl;
-        std::cout << "Usage: [executable] [-f filename.osm]" << std::endl;
+        cout << "To specify a map file use the following format: " << endl;
+        cout << "Usage: [executable] [-f filename.osm]" << endl;
         osm_data_file = "../map.osm";
     }
     
     std::vector<std::byte> osm_data;
  
     if( osm_data.empty() && !osm_data_file.empty() ) {
-        std::cout << "Reading OpenStreetMap data from the following file: " <<  osm_data_file << std::endl;
+        cout << "Reading OpenStreetMap data from the following file: " <<  osm_data_file << endl;
         auto data = ReadFile(osm_data_file);
         if( !data )
-            std::cout << "Failed to read." << std::endl;
+            cout << "Failed to read." << endl;
         else
             osm_data = std::move(*data);
     }
 
     // create coordinates
     float start_x, start_y, end_x, end_y;
+    start_x = start_y = end_x = end_y = 0.0f;
 
-    std::cout << "Enter start (x): "; 
-    std::cin >> start_x;
-
-    std::cout << "Enter start (y): "; 
-    std::cin >> start_y;
-
-    std::cout << "Enter end (x): "; 
-    std::cin >> end_x;
-
-    std::cout << "Enter end (y): "; 
-    std::cin >> end_y;
+    cout << "To begin, enter start coordinates and end coordinates. All values must be 0-100." << endl;
+    get_coordinates("start (x)", start_x);
+    get_coordinates("start (y)", start_y);
+    get_coordinates("end (x)", end_x);
+    get_coordinates("end (y)", end_y);
 
     // Build Model.
     RouteModel model{osm_data};
