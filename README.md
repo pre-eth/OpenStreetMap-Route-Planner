@@ -17,9 +17,9 @@ git clone https://github.com/pre-eth/OpenStreetMap-Route-Planner.git --recurse-s
 
 ## Dependencies for Running Locally
 
-This project was built and tested on Fedora. Building on Windows and OS X requires you to build the IO2D library, which can be pretty difficult.
+This project was built and tested on Fedora. Building the projects requires building the IO2D library, which can be pretty difficult.
 
-For simplicity's sake I've included a built copy of the IO2D library in the repo, which means if you're on Linux you can skip to the *Compiling and Running* section. Otherwise, good luck building it yourself and here's what else you'll need:
+Good luck and here's what else you'll need:
 
 * cmake >= 3.11.3
   * All OSes: [click here for installation instructions](https://cmake.org/install/)
