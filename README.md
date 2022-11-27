@@ -19,7 +19,7 @@ git clone git@github.com:udacity/CppND-Route-Planning-Project.git --recurse-subm
 
 This project was built and tested on Fedora. Building on Windows and OS X requires you to build the IO2D library, which can be pretty difficult.
 
-For simplicity's sake I've included a built copy of the IO2D library in the repo, which means if you're on Linux you can skip to the *Compiling and Running* section. Otherwise, good luck building it yourself and here's what you'll need:
+For simplicity's sake I've included a built copy of the IO2D library in the repo, which means if you're on Linux you can skip to the *Compiling and Running* section. Otherwise, good luck building it yourself and here's what else you'll need:
 
 * cmake >= 3.11.3
   * All OSes: [click here for installation instructions](https://cmake.org/install/)
@@ -38,16 +38,12 @@ For simplicity's sake I've included a built copy of the IO2D library in the repo
 ### Compiling and Running
 Compiling and running the project is as easy as:
 ```
-cd build
+mkdir build && cd build
 cmake ..
 make
 ./OSM_A_star_search
 ```
-### Running
-The executable will be placed in the `build` directory. From within `build`, you can run the project as follows:
-```
-./OSM_A_star_search
-```
+
 Or to specify a map file:
 ```
 ./OSM_A_star_search -f ../<your_osm_file.osm>
