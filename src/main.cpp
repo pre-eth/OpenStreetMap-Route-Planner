@@ -32,9 +32,10 @@ void get_coordinates(const string pair, float n) {
     cout << "Enter " << pair << ": ";
     cin >> n;
     while (cin.fail() || n < 0 || n > 100) {
-        cout << "Invalid value. Please enter a value between 0-100.";
+        cout << "Invalid value. Please enter a value between 0-100." << endl;
         cin.clear();
         cin.ignore(10000, '\n');
+        cout << "Enter " << pair << ": ";
         cin >> n;
     }
 }
@@ -66,7 +67,6 @@ int main(int argc, const char **argv)
 
     // create coordinates
     float start_x, start_y, end_x, end_y;
-    start_x = start_y = end_x = end_y = 0.0f;
 
     cout << "To begin, enter start coordinates and end coordinates. All values must be 0-100." << endl;
     get_coordinates("start (x)", start_x);
